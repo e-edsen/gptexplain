@@ -58,7 +58,7 @@ export default function Home() {
   return (
     <div>
       {loading ? (
-        <div className='flex justify-center items-center min-h-screen'>
+        <div className='flex justify-center items-center max-h-screen'>
           <h1>Loading...</h1>
         </div>
       ) : (
@@ -68,7 +68,7 @@ export default function Home() {
           } justify-center items-center min-h-screen mt-10`}
         >
           <form
-            className='flex flex-col justify-center items-center w-1/4 min-h-screen'
+            className='flex flex-col justify-center items-center w-1/4'
             onSubmit={submitPrompt}
           >
             <input

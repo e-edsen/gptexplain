@@ -31,3 +31,7 @@ export async function POST(request: Request) {
   const answer = await chatGPT(prompt);
   return NextResponse.json({ answer });
 }
+
+export async function GET(request: Request) {
+  return NextResponse.json({ error: 'No GET' });
+}
