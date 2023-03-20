@@ -7,7 +7,7 @@ async function getAnswer(prompt: String) {
   const res = await fetch('https://gptexplain.vercel.app/api/generate', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify({ prompt }),
   });
