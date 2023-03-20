@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Answer from '@/components/Answer';
 
 async function getAnswer(prompt: String) {
-  const res = await fetch('http://localhost:3000/api/generate', {
+  const res = await fetch('https://gptexplain.vercel.app/api/generate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export default function Home() {
           } justify-center items-center min-h-screen mt-10`}
         >
           <form
-            className='flex flex-col justify-start items-start w-1/4 min-h-screen'
+            className='flex flex-col justify-center items-center w-1/4 min-h-screen'
             onSubmit={submitPrompt}
           >
             <input
