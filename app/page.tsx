@@ -43,8 +43,11 @@ export default function Home() {
   };
 
   async function generate(prompt: String) {
+    setAnswer('loading');
+
     const res = await getAnswer(templatePrompt(prompt));
     console.log(res);
+
     setAnswer(res.answer);
   }
 
@@ -55,27 +58,45 @@ export default function Home() {
   return (
     <div>
       {loading ? (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center min-h-screen'>
           <h1>Loading...</h1>
         </div>
       ) : (
-        <div className='flex flex-col justify-center items-center h-screen'>
-          <form className='flex flex-col' onSubmit={submitPrompt}>
-              <label htmlFor='prompt'>Topics :</label>
+        <div
+          className={`flex ${
+            answer ? 'flex-row' : 'flex-col'
+          } justify-center items-center min-h-screen mt-10`}
+        >
+          <form
+            className='flex flex-col justify-start items-start w-1/4 min-h-screen'
+            onSubmit={submitPrompt}
+          >
             <input
-              className='border-2 border-black rounded-sm mb-5'
+              className='textarea textarea-bordered w-full max-w-xs mb-5'
+              placeholder='What is React?'
               type='text'
               value={prompt.toString()}
               name='prompt'
               onChange={editPrompt}
             />
-            <button className='border-2 border-black' type='submit'>
+            <select
+              className='select select-bordered w-full max-w-xs mb-5'
+              disabled
+            >
+              <option disabled selected>
+                Choose a prompt type
+              </option>
+              <option value='1'>Explain</option>
+              <option value='2'>Summarize</option>
+              <option value='3'>Answer Multiple Choice</option>
+            </select>
+            <button className='btn btn-primary w-full max-w-xs' type='submit'>
               Explain!
             </button>
           </form>
 
-          <div className='mt-5'>
-            {answer ? <Answer answer={answer} /> : <h1>Start asking me!</h1>}
+          <div className='flex mt-5 w-1/2 justify-center items-center mb-5'>
+            {answer ? <Answer answer={answer} /> : <h1>Please ask me!</h1>}
           </div>
         </div>
       )}

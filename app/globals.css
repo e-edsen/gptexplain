@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-p {
-  @apply text-gray-700 mx-2;
+.markdown p {
+  @apply my-2;
+}
+
+.btn {
+  @apply normal-case;
 }

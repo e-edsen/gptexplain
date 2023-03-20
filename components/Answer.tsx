@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-interface Answer {
+interface AnswerProps {
   answer: String;
 }
 
-export default function Answer({ answer }: Answer) {
+export default function Answer({ answer }: AnswerProps) {
   return (
-    <div className='w-full p-2/3 flex flex-col justify-center items-center'>
-      <ReactMarkdown className="w-2/3 mx-2">{answer.toString()}</ReactMarkdown>
+    <div className='w-full flex flex-col justify-center items-center'>
+      {answer === 'loading' ? (
+        <h1>loading...</h1>
+      ) : (
+        <ReactMarkdown className='w-2/3 text-left markdown'>
+          {answer.toString()}
+        </ReactMarkdown>
+      )}
     </div>
   );
 }

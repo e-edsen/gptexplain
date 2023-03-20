@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 const { Configuration, OpenAIApi } = require('openai');
 
 const configuration = new Configuration({
