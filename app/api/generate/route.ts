@@ -19,17 +19,17 @@ const chatGPT = async (prompt: String) => {
 
 // POST /api/generate
 export async function POST(request: Request) {
-  // if (!request.body) {
-  //   return NextResponse.json({ error: 'No body' });
-  // }
-  // const bodyObj = await request.json();
-  // if (!bodyObj.prompt) {
-  //   return NextResponse.json({ error: 'No prompt' });
-  // }
+  if (!request.body) {
+    return NextResponse.json({ error: 'No body' });
+  }
+  const bodyObj = await request.json();
+  if (!bodyObj.prompt) {
+    return NextResponse.json({ error: 'No prompt' });
+  }
 
-  // const { prompt } = bodyObj;
-  // const answer = await chatGPT(prompt);
-  return NextResponse.json({ answer: "answer" });
+  const { prompt } = bodyObj;
+  const answer = await chatGPT(prompt);
+  return NextResponse.json({ answer });
 }
 
 export async function GET(request: Request) {
