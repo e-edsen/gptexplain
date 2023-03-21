@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Answer from '@/components/Answer';
 
 async function getAnswer(prompt: String) {
-  const res = await fetch('http://localhost:3000/api/generate', {
+  const res = await fetch('https://gptexplain.vercel.app/api/generate', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
