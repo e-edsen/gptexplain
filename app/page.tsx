@@ -32,7 +32,7 @@ export default function Home() {
     setPrompt(e.target.value);
   };
 
-  const submitPrompt = (e: any) => {
+  const submitPrompt = async (e: any) => {
     e.preventDefault();
     if (!prompt) {
       setAnswer('Please enter a topic!');
