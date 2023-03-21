@@ -1,9 +1,5 @@
 import { NextResponse } from 'next/server';
 
-export const config = {
-  runtime: 'edge',
-};
-
 interface ChatResponse {
   choices: [
     {
