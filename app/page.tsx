@@ -45,7 +45,7 @@ export default function Home() {
   async function generate(prompt: String) {
     setAnswer('loading');
 
-    const res = await getAnswer(templatePrompt(prompt));
+    const res = await getAnswer(prompt);
     console.log(res);
 
     setAnswer(res.answer);
