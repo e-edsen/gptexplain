@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Answer from '@/components/Answer';
 
 async function getAnswer(prompt: String) {
@@ -19,16 +19,16 @@ async function getAnswer(prompt: String) {
 }
 
 export default function Home() {
-  const [loading, setLoading] = useState<Boolean>(true);
-  const [prompt, setPrompt] = useState<String>('');
-  const [answer, setAnswer] = useState<String>('');
+  const [loading, setLoading] = useState<boolean>(true);
+  const [prompt, setPrompt] = useState<string>('');
+  const [answer, setAnswer] = useState<string>('');
 
-  const editPrompt = (e: any) => {
+  const editPrompt = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setPrompt(e.target.value);
   };
 
-  const submitPrompt = async (e: any) => {
+  const submitPrompt = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!prompt) {
       setAnswer('Please enter a topic!');
@@ -38,7 +38,7 @@ export default function Home() {
     generate(prompt);
   };
 
-  async function generate(prompt: String) {
+  async function generate(prompt: string) {
     setAnswer('loading');
 
     const res = await getAnswer(prompt);
@@ -71,7 +71,7 @@ export default function Home() {
               className='textarea textarea-bordered w-full max-w-xs mb-5'
               placeholder='What is React?'
               type='text'
-              value={prompt.toString()}
+              value={prompt}
               name='prompt'
               onChange={editPrompt}
             />

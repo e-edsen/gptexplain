@@ -4,12 +4,17 @@ interface ChatResponse {
   choices: [
     {
       message: {
-        content: String;
+        content: string;
       };
     }
   ];
 }
 
+const templatePrompt = (topic: string) => {
+  return `Please ignore all previous instructions. Respond in English. I want you to act as a best teacher like Feynmann. Explain about ${topic} in 200 words. Explain as fast as possible, Respond to this in under 10 second!. start with {start explanation} tags at the beginning of the explanation and end with {stop explanation} tags at the end of the explanation. Use metaphors. I want you to start with a short story. Avoid generic phrases, self-referencing, and apologies. Use metaphors and mini-stories to explain difficult concepts. Focus on providing a comprehensive and detailed explanation`;
+};
+
+// GPT NPM Package
 // const { Configuration, OpenAIApi } = require('openai');
 
 // const configuration = new Configuration({
@@ -17,10 +22,6 @@ interface ChatResponse {
 // });
 
 // const openai = new OpenAIApi(configuration);
-
-const templatePrompt = (topic: String) => {
-  return `Please ignore all previous instructions. Respond in English. I want you to act as a best teacher like Feynmann. Explain about ${topic} in 200 words. Explain as fast as possible, Respond to this in under 10 second!. start with {start explanation} tags at the beginning of the explanation and end with {stop explanation} tags at the end of the explanation. Use metaphors. I want you to start with a short story. Avoid generic phrases, self-referencing, and apologies. Use metaphors and mini-stories to explain difficult concepts. Focus on providing a comprehensive and detailed explanation`;
-};
 
 // const chatGPT = async (prompt: String) => {
 //   // console.log(prompt);
@@ -31,7 +32,7 @@ const templatePrompt = (topic: String) => {
 //   return response['data']['choices'][0]['message']['content'];
 // };
 
-const chatGPT = async (prompt: String) => {
+const chatGPT = async (prompt: string) => {
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
