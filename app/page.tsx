@@ -1,5 +1,3 @@
-'use client';
-
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Answer from '@/components/Answer';
 
@@ -19,7 +17,6 @@ async function getAnswer(prompt: String) {
 }
 
 export default function Home() {
-  const [loading, setLoading] = useState<boolean>(true);
   const [prompt, setPrompt] = useState<string>('');
   const [answer, setAnswer] = useState<string>('');
 
@@ -46,10 +43,6 @@ export default function Home() {
 
     setAnswer(res.answer);
   }
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
 
   return (
     <div>
